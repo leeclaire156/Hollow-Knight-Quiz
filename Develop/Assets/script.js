@@ -1,8 +1,20 @@
-// var startBtn = document.querySelector("#start-btn");
-// var infoShow = document.querySelector(".info-card");
-// function showInstructions() {
-//     startBtn.addEventListener.(".info-card.style.display:");
-// }
+var startBtn = document.querySelector(".start-btn");
+var highScoreBtn = document.querySelector(".scores-btn");
+
+var instructionPage = document.querySelector("#info-pg");
+var continueBtn = document.querySelector("#continue-btn");
+
+var quizPage = document.querySelector("#quiz-pg");
+var questionText = document.querySelector("#question-text");
+var answerChoices = document.querySelector("#answer-choices");
+
+var timerCountdown = document.querySelector("#time-left");
+var playerScore = document.querySelector(".player-score");
+
+var highScorePage = document.querySelector("#hs-pg");
+var saveBtn = document.querySelector(".save-btn");
+var restartBtn = document.querySelector(".restart-btn");
+var quitBtn = document.querySelector(".quit-btn");
 
 var questionsBank = [
     {
