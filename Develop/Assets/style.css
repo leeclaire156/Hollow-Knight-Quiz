@@ -19,27 +19,29 @@ h1 {
     font-size: 50px;
 }
 
-#start-btn {
+/* #start-btn {
     position: absolute;
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 30px;
+    display: none;
 }
 
 
 #start-btn,
 #continue-btn {
-    /* border: 0px;
-    background-color: rgba(0, 0, 0, 0.0); */
-    cursor: pointer;
+    border: 0px;
+    background-color: rgba(0, 0, 0, 0.0);
+cursor: pointer;
 }
 
 #continue-btn {
     font-size: 20px;
+    */
 }
 
-.info-card {
+.info-pg {
     display: none;
 }
 
