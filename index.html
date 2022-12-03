@@ -35,51 +35,62 @@
         <button id="continue-btn" type="button">Continue</button>
     </div>
 
-    <!-- Timer -->
-    <div class="timer">
-        <h2 class="timer-text">Time Left</h2>
-        <div class="time-left">5:00</div>
-    </div>
-
-
-    <!-- Quiz Questions -->
-
-    <div class="questions">
-        <h2 class="question-text">Question?</h2>
-
-        <div class="answer-choices">
-
-            <div class="choice-1">
-                A. Choice A
-            </div>
-
-            <div class="choice-2">
-                B. Choice B
-            </div>
-
-            <div class="choice-3">
-                C. Choice C
-            </div>
-
-            <div class="choice-4">
-                D. Choice D
-            </div>
-
+    <!--Quiz Portion-->
+    <div class="quiz-pg">
+        <!-- Timer -->
+        <div class="timer">
+            <h2 class="timer-text">Time Left</h2>
+            <div class="time-left">5:00</div>
         </div>
 
-        <!--High Score Page-->
-        <h2>Achievements</h2>
-        <h3>Score</h3>
-        <div id="player-score">0</div>
-        <form>
-            <h3>Save your score by entering your initials below.</h3>
-            <input type="text" placeholder="Your initials">
-        </form>
-        <button id="start-btn" type="button">Save Score</button>
-        <button id="scores-btn" type="button">Play Again</button>
-        <button id="quit-btn" type="button">Quit Game</button>
+        <!--Quiz Score Tracker-->
+        <div class="quiz-score">
+            <h3>Score</h3>
+            <div id="player-score">0</div>
+        </div>
 
-        <script src=" ./Develop/Assets/script.js"></script>
+        <!-- Quiz Questions -->
+
+        <div class="questions">
+            <h2 class="question-text">Question?</h2>
+
+            <div class="answer-choices">
+
+                <div class="choice-1">
+                    A. Choice A
+                </div>
+
+                <div class="choice-2">
+                    B. Choice B
+                </div>
+
+                <div class="choice-3">
+                    C. Choice C
+                </div>
+
+                <div class="choice-4">
+                    D. Choice D
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--High Score Page-->
+        <div class="hs-pg">
+            <h2>Achievements</h2>
+            <h3>Score</h3>
+            <div id="player-score">0</div>
+            <form>
+                <h3>Save your score by entering your initials below.</h3>
+                <input type="text" placeholder="Your initials">
+            </form>
+            <button id="save-btn" type="button">Save Score</button>
+            <button id="restart-btn" type="button">Play Again</button>
+            <button id="quit-btn" type="button">Quit Game</button>
+
+            <script src=" ./Develop/Assets/script.js"></script>
+        </div>
 </body>
 
 </html>
