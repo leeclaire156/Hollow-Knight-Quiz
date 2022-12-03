@@ -1,0 +1,53 @@
+* {
+    font-family: 'Cinzel', serif;
+    border: .5px white solid;
+    text-align: center;
+    background-color: black;
+    color: white;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+h1 {
+    transform: scaleY(1.3);
+    font-size: 50px;
+}
+
+#start-btn {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+}
+
+
+#start-btn,
+#continue-btn {
+    /* border: 0px;
+    background-color: rgba(0, 0, 0, 0.0); */
+    cursor: pointer;
+}
+
+#continue-btn {
+    font-size: 20px;
+}
+
+.info-card {
+    display: none;
+}
+
+.instructions {
+    color: rgb(255, 255, 255, 0.5);
+}
+
+#signature {
+    padding-left: 400px;
+    width: 100%;
+}
