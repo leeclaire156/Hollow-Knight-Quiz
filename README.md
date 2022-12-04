@@ -19,7 +19,5 @@ https://www.codingnepalweb.com/quiz-app-with-timer-javascript/
 https://www.youtube.com/watch?v=3fbU4z7fPe4
 
 * timer credit: 
-https://stackoverflow.com/questions/20618355/how-to-write-a-countdown-timer-in-javascript
-
 
 https://www.youtube.com/watch?v=_a4XCarxwr8
