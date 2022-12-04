@@ -11,6 +11,7 @@ startBtn.addEventListener("click", function () {
     //!!!!!!!!!!!!TODO DELETE BELOW AND UNCOMMENT ABOVE
     quizPage.style.display = "grid";
     startTimer();
+    loadQuestion(0);
 });
 
 //Clicking start leads you to score board/high score page
@@ -27,15 +28,22 @@ var continueBtn = document.querySelector("#continue-btn");
 continueBtn.addEventListener("click", function () {
     instructionPage.style.display = "none";
     quizPage.style.display = "grid";
-    //TODO ADD TIMER FUNCTION HERE
-
+    //TODO uncomment below!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // startTimer();
+    // loadQuestion(0);
 });
 
 //Quiz Page
 var quizPage = document.querySelector(".quiz-pg");
 var questionText = document.querySelector(".question-text");
 var answerList = document.querySelector(".answer-list");
-var choice = document.querySelector(".choice");
+var allChoices = document.querySelectorAll(".choice");
+var choice1 = document.querySelector(".choice-1");
+var choice2 = document.querySelector(".choice-2");
+var choice3 = document.querySelector(".choice-3");
+var choice4 = document.querySelector(".choice-4");
+var nextBtn = document.querySelector(".next-btn");
+
 
 var questionsBank = [
     {
@@ -131,6 +139,39 @@ var questionsBank = [
 ];
 
 
+var questionNumb = 0;
+
+//Next button clicking cycles through questions
+nextBtn.addEventListener("click", function () {
+    if (questionNumb < questionsBank.length - 1) {
+        questionNumb++;
+        loadQuestion(questionNumb);
+    } else {
+        console.log("doe");
+    }
+
+});
+
+//This is how we change the questions based on the index
+function loadQuestion(index) {
+    questionText.innerText = questionsBank[index].question;
+    choice1.innerText = questionsBank[index].choices[0];
+    choice2.innerText = questionsBank[index].choices[1];
+    choice3.innerText = questionsBank[index].choices[2];
+    choice4.innerText = questionsBank[index].choices[3];
+
+
+
+    // for (var i = 0; i <= choice.length; i++) {
+    //     choice[i].setAttribute("onclick", "optionSelected(this)");
+    // }
+}
+
+
+
+
+
+
 //Timer on Quiz Page
 var timerCountdown = document.querySelector(".time-remaining");
 var secondsLeft = 5 * 60;
@@ -143,8 +184,8 @@ function startTimer() {
         var sec = Math.floor(secondsLeft % 60);
         timerCountdown.innerHTML = `${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}`;
         if (secondsLeft == 0 || secondsLeft < 1) {
-            endTime();
             clearInterval(timer);
+            endTime();
         }
     }, 1000);
 }
@@ -156,6 +197,7 @@ function endTime() {
 
 //Score Keeper on Quiz Page
 var playerScore = document.querySelector(".player-score");
+
 
 //Save Score Page
 var saveScorePage = document.querySelector(".save-pg");
