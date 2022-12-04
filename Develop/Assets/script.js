@@ -1,20 +1,16 @@
-var startBtn = document.querySelector(".start-btn");
-var highScoreBtn = document.querySelector(".scores-btn");
+//Dot (.) is class selector, # is id selector
+// Start Page
+var startBtn = document.querySelector("#start-btn");
+var scoreBoardBtn = document.querySelector(".scores-btn");
 
-var instructionPage = document.querySelector("#info-pg");
+//Instructions Page
+var instructionPage = document.querySelector(".info-pg");
 var continueBtn = document.querySelector("#continue-btn");
 
-var quizPage = document.querySelector("#quiz-pg");
-var questionText = document.querySelector("#question-text");
-var answerChoices = document.querySelector("#answer-choices");
-
-var timerCountdown = document.querySelector("#time-left");
-var playerScore = document.querySelector(".player-score");
-
-var highScorePage = document.querySelector("#hs-pg");
-var saveBtn = document.querySelector(".save-btn");
-var restartBtn = document.querySelector(".restart-btn");
-var quitBtn = document.querySelector(".quit-btn");
+//Quiz Page
+var quizPage = document.querySelector(".quiz-pg");
+var questionText = document.querySelector(".question-text");
+var answerChoices = document.querySelector(".answer-choices");
 
 var questionsBank = [
     {
@@ -108,3 +104,20 @@ var questionsBank = [
 } 
 */
 ];
+
+
+//Timer on Quiz Page
+var timerCountdown = document.querySelector(".time-left");
+
+//Score Keeper on Quiz Page
+var playerScore = document.querySelector(".player-score");
+
+//Save Score Page
+var saveScorePage = document.querySelector(".save-pg");
+var saveBtn = document.querySelector("#save-btn");
+var restartBtn = document.querySelector("#restart-btn");
+var quitBtn = document.querySelector("#quit-btn");
+
+//Score Board Page
+var highScorePage = document.querySelector(".hs-pg");
+
