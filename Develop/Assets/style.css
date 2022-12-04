@@ -4,7 +4,7 @@
 
 * {
     font-family: 'Cinzel', serif;
-    border: .5px white solid;
+    /* border: .5px white solid; */
     text-align: center;
     background-color: black;
     color: white;
@@ -15,6 +15,35 @@
 
 .btn:hover {
     cursor: pointer;
+}
+
+/* .btn[disabled]:hover {
+    cursor: not-allowed;
+} */
+
+.choice:hover {
+    cursor: pointer;
+}
+
+.info-pg,
+.quiz-pg,
+.save-pg,
+.hs-pg {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*DOM Manipulation will reveal these pages to us*/
+.info-pg.active,
+.quiz-pg.active,
+.save-pg.active,
+.hs-pg.active {}
+
+/*Home Page*/
+.start-pg {
+    /* display: none; */
 }
 
 h1 {
@@ -30,7 +59,7 @@ h1 {
     font-size: 3rem;
 }
 
-#scores-btn {
+#start-pg-scores-btn {
     position: absolute;
     top: 45%;
     left: 50%;
@@ -39,24 +68,10 @@ h1 {
 }
 
 
-/*
-
-
-#start-btn,
-#continue-btn {
-    border: 0px;
-    background-color: rgba(0, 0, 0, 0.0);
-cursor: pointer;
-}
-
-#continue-btn {
-    font-size: 20px;
-    
-}
-
+/* Instructions Page */
 .info-pg {
     display: none;
-}*/
+}
 
 .instructions {
     color: rgb(255, 255, 255, 0.5);
@@ -65,4 +80,46 @@ cursor: pointer;
 #signature {
     padding-left: 400px;
     width: 100%;
+}
+
+
+/*Quiz Page*/
+
+/*Quiz page's grid formatting*/
+.quiz-pg {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: .2fr 2fr;
+}
+
+.timer {
+    /* This makes the Timer element start at row 1, column 1 and have it span for 1 row and 1 column. */
+    grid-area: 1 / 1 / span 1 / span 1;
+}
+
+.quiz-score {
+    /* This makes the Timer element start at row 1, column 2 and have it span for 1 row and 1 column. */
+    grid-area: 1 / 2 / span 1 / span 1;
+}
+
+.questions {
+    grid-area: 2 / 1 / span 1 / span 2;
+}
+
+.quiz-pg {
+    display: none;
+}
+
+/* Save Score Page */
+.save-pg {
+    display: none;
+}
+
+.save-form {
+    margin: 3rem 0 7rem 0;
+}
+
+/* High Score Page */
+.hs-pg {
+    display: none;
 }
