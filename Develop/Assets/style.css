@@ -45,16 +45,9 @@
     transform: translate(-50%, -50%);
 }
 
-/*TODO cleanup: Remove these*/
-/*DOM Manipulation will reveal these pages to us*/
-.info-pg.active,
-.quiz-pg.active,
-.save-pg.active,
-.hs-pg.active {}
-
 /*Home Page - TODO cleanup: change below to display: block;*/
 .start-pg {
-    /* display: none; */
+    display: block;
 }
 
 /*TODO Add soft air bush under text for glowing look*/
