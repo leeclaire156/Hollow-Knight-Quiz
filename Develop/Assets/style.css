@@ -7,7 +7,7 @@
     /* border: .5px white solid; */
     text-align: center;
     background-color: black;
-    color: white;
+    color: rgb(255, 255, 255);
     box-sizing: border-box;
     width: 100%;
     font-size: 3rem;
@@ -17,17 +17,22 @@
     cursor: pointer;
 }
 
-/* .btn[disabled]:hover {
-    cursor: not-allowed;
-} */
+.btn[disabled]:hover {
+    pointer-events: none;
+}
 
 .choice:hover {
     cursor: pointer;
     border: 1px white solid;
 }
 
-.disabled:hover {
+.disabled {
     pointer-events: none;
+}
+
+/*To be deleted*/
+.active {
+    color: rgb(121, 121, 121);
 }
 
 .info-pg,
