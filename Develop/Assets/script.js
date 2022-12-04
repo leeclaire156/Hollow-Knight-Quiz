@@ -13,6 +13,8 @@ startBtn.addEventListener("click", function () {
 
     //!!!!!!!!!!!!TODO DELETE BELOW AND UNCOMMENT ABOVE
     quizPage.style.display = "grid";
+    //starting the game should always resetart the timer
+    clearInterval(timer);
     startTimer();
     loadQuestion(0);
     playerScore = 0;
@@ -253,10 +255,12 @@ function startTimer() {
 }
 
 function ranOuttaTime() {
-    //!!TODO replace below with function based on quiz results
+    //!!TODO replace below with function based on line 209 (else portion of the if/else statement from nextBtn)
     timerCountdown.innerHTML = "NONE";
     quizPage.style.display = "none";
-
+    saveScorePage.style.display = "block";
+    // clearInterval(timer);
+    // secondsLeft = 5 * 60;
 }
 
 
@@ -294,6 +298,10 @@ scoreBoardBtn2.addEventListener("click", function () {
 
 //Clicking play again leads you to quiz page
 playAgainBtn.addEventListener("click", function () {
+    //should reset back to question 1
+    questionNumb = 0;
+    //player score should reset
+    //timer should reset if it hasnt already
     saveScorePage.style.display = "none";
     quizPage.style.display = "grid";
 });
