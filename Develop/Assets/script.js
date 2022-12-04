@@ -7,7 +7,10 @@ var scoreBoardBtn = document.querySelector(".scores-btn");
 //Clicking start leads you to instructions page
 startBtn.addEventListener("click", function () {
     startPage.style.display = "none";
-    instructionPage.style.display = "block";
+    // instructionPage.style.display = "block";
+    //!!!!!!!!!!!!TODO DELETE BELOW AND UNCOMMENT ABOVE
+    quizPage.style.display = "grid";
+    startTimer();
 });
 
 //Clicking start leads you to score board/high score page
@@ -24,6 +27,8 @@ var continueBtn = document.querySelector("#continue-btn");
 continueBtn.addEventListener("click", function () {
     instructionPage.style.display = "none";
     quizPage.style.display = "grid";
+    //TODO ADD TIMER FUNCTION HERE
+
 });
 
 //Quiz Page
@@ -127,7 +132,27 @@ var questionsBank = [
 
 
 //Timer on Quiz Page
-var timerCountdown = document.querySelector(".time-left");
+var timerCountdown = document.querySelector(".time-remaining");
+var secondsLeft = 5 * 60;
+var timer;
+
+function startTimer() {
+    timer = setInterval(function () {
+        secondsLeft--;
+        var min = Math.floor(secondsLeft / 60);
+        var sec = Math.floor(secondsLeft % 60);
+        timerCountdown.innerHTML = `${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}`;
+        if (secondsLeft == 0 || secondsLeft < 1) {
+            endTime();
+            clearInterval(timer);
+        }
+    }, 1000);
+}
+
+function endTime() {
+    //!!TODO replace below with function based on quiz results
+    timerCountdown.innerHTML = "NONE";
+}
 
 //Score Keeper on Quiz Page
 var playerScore = document.querySelector(".player-score");
@@ -165,8 +190,8 @@ var highScoreQuitBtn = document.querySelector("#hs-pg-quit-btn");
 //Clicking quit game leads you to start page
 highScoreQuitBtn.addEventListener("click", function () {
     highScorePage.style.display = "none";
-    startPage.style.display = "block";
+    //startPage.style.display = "block";
 
     //!!!!!TODO will delete below later, just need to use it to access score page w/o going to quiz
-    //saveScorePage.style.display = "block";
+    saveScorePage.style.display = "block";
 });
