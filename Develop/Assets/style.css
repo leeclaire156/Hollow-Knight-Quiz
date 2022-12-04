@@ -46,6 +46,7 @@
     /* display: none; */
 }
 
+/*TODO Add soft air bush under text for glowing look*/
 h1 {
     transform: scaleY(1.3);
     font-size: 5rem;
@@ -87,7 +88,7 @@ h1 {
 
 /*Quiz page's grid formatting*/
 .quiz-pg {
-    display: grid;
+    display: none;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: .2fr 2fr;
 }
@@ -106,10 +107,6 @@ h1 {
     grid-area: 2 / 1 / span 1 / span 2;
 }
 
-.quiz-pg {
-    display: none;
-}
-
 /* Save Score Page */
 .save-pg {
     display: none;
@@ -122,4 +119,8 @@ h1 {
 /* High Score Page */
 .hs-pg {
     display: none;
+}
+
+#hs-pg-quit-btn {
+    border: 1px white solid;
 }
