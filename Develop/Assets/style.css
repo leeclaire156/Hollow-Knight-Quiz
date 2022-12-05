@@ -83,7 +83,7 @@ h1 {
 }
 
 .instructions {
-    color: rgb(255, 255, 255, 0.5);
+    color: rgb(255, 255, 255);
 }
 
 #signature {
@@ -133,6 +133,11 @@ h1 {
 .hs-pg {
     display: none;
 }
+
+.hs-list {
+    list-style: none;
+}
+
 
 #hs-pg-quit-btn {
     border: 1px white solid;

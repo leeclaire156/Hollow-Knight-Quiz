@@ -5,6 +5,9 @@ A quiz game based on the platform video game, Hollow Knight.
 
 
 ## Credits
+forEach method:
+* https://www.w3schools.com/jsref/jsref_foreach.asp
+
 * Transparency Credit
 https://stackoverflow.com/questions/11184117/transparent-css-background-color
 
@@ -45,3 +48,6 @@ using ?? operator
 https://michael-karen.medium.com/how-to-save-high-scores-in-local-storage-7860baca9d68
 
 https://www.youtube.com/watch?v=DFhmNLKwwGw&list=PLDlWc9AfQBfZIkdVaOQXi1tizJeNJipEx&index=11
+
+* array.map() method:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
