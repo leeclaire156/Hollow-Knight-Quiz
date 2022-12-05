@@ -167,6 +167,16 @@ allChoices.forEach((choices, playerAns) => {
         //Enables the next button upon choosing an answer
         nextBtn.classList.remove("disabled")
 
+        //Shows in console log what player chose, returns a number
+        console.log(playerAns);
+        //converts number to match index in questionsBank array
+        var chosenAns = questionsBank[questionNumb].choices[playerAns];
+        //confirms answer player chose is a string from array
+        console.log(chosenAns);
+        //answer key for this question
+        console.log(questionsBank[questionNumb].correct);
+
+
         if (playerAns == questionsBank[questionNumb].correct) {
             playerScore += 100;
             console.log(playerScore);
