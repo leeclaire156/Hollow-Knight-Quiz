@@ -7,7 +7,7 @@
     /* border: .5px white solid; */
     text-align: center;
     background-color: black;
-    color: rgb(255, 255, 255);
+    color: white;
     box-sizing: border-box;
     width: 100%;
     font-size: 3rem;
@@ -17,20 +17,17 @@
     cursor: pointer;
 }
 
-.btn[disabled]:hover {
-    pointer-events: none;
-}
-
 .choice:hover {
     cursor: pointer;
-    border: 1px white solid;
+    /* color | offset-x | offset-y | blur-radius
+    color: white; */
+    text-shadow: white 0 0 2rem;
 }
 
 .disabled {
     pointer-events: none;
 }
 
-/*To be deleted*/
 .active {
     color: rgb(121, 121, 121);
 }
@@ -82,6 +79,54 @@ h1 {
     display: none;
 }
 
+/*Creates fade in animation for instructions, similar to certain quote dialogs in game*/
+@keyframes fadeIn {
+    100% {
+        opacity: 1;
+    }
+}
+
+.instructions {
+    animation: fadeIn 2s forwards;
+    opacity: 0;
+}
+
+.instructions:nth-child(1) {
+    animation-delay: 1s;
+}
+
+.instructions:nth-child(2) {
+    animation-delay: 2.5s;
+}
+
+.instructions:nth-child(3) {
+    animation-delay: 4s;
+}
+
+.instructions:nth-child(4) {
+    animation-delay: 5.5s;
+}
+
+.instructions:nth-child(5) {
+    animation-delay: 7s;
+}
+
+.instructions:nth-child(6) {
+    animation-delay: 8.5s;
+}
+
+.instructions:nth-child(7) {
+    animation-delay: 10s;
+}
+
+.instructions:nth-child(8) {
+    animation-delay: 11.5s;
+}
+
+.instructions:nth-child(9) {
+    animation-delay: 13s;
+}
+
 .instructions {
     color: rgb(255, 255, 255);
 }
@@ -101,6 +146,17 @@ h1 {
     grid-template-rows: .2fr 2fr;
 }
 
+.question-text {
+    font-size: 3.5rem;
+    /* color | offset-x | offset-y | blur-radius */
+    text-shadow: white 0 0 2rem;
+}
+
+/* .choice {
+    color: black;
+    text-shadow: 2px 2px white;
+} */
+
 .timer {
     /* This makes the Timer element start at row 1, column 1 and have it span for 1 row and 1 column. */
     grid-area: 1 / 1 / span 1 / span 1;
@@ -117,6 +173,7 @@ h1 {
 
 .next-btn {
     /* TODO add a way to distinguish next button from rest of answer choices margin-left: 600px; */
+    margin-left: 450px;
     width: 100%;
 }
 
