@@ -157,15 +157,21 @@ function loadQuestion(index) {
     choice2.innerText = questionsBank[index].choices[1];
     choice3.innerText = questionsBank[index].choices[2];
     choice4.innerText = questionsBank[index].choices[3];
-    //Disables the next button upon loading
-    nextBtn.classList.add("disabled")
 }
 
 
 allChoices.forEach((choices, playerAns) => {
     choices.addEventListener("click", () => {
-        //Enables the next button upon choosing an answer
-        nextBtn.classList.remove("disabled")
+
+        //Shows in console log what player chose, returns a number
+        console.log(playerAns);
+        //converts number to match index in questionsBank array
+        var chosenAns = questionsBank[questionNumb].choices[playerAns];
+        //confirms answer player chose is a string from array
+        console.log(chosenAns);
+        //answer key for this question
+        console.log(questionsBank[questionNumb].correct);
+
 
         //Shows in console log what player chose, returns a number
         console.log(playerAns);
@@ -178,20 +184,15 @@ allChoices.forEach((choices, playerAns) => {
 
 
         if (playerAns == questionsBank[questionNumb].correct) {
+            console.log(true);
             playerScore += 100;
             console.log(playerScore);
             playerAns.style("color:green;")
+            choices.classList.add("correct");
+
         } else {
-            //If the player clicks on the wrong answer, 5 seconds are taken off the clock
+            //If the player clicks on the wrong answer, 5 seconds are taken off the clock - works
             secondsLeft -= 5;
-        }
-
-        //To be deleted - highlights answer chosen in grey
-        choices.classList.add("active");
-
-        //disable option choices When player selects an answer
-        for (i = 0; i <= 3; i++) {
-            allChoices[i].classList.add("disabled");
         }
 
     })
@@ -199,40 +200,8 @@ allChoices.forEach((choices, playerAns) => {
 });
 
 
-
-//Next button clicking cycles through questions
-nextBtn.addEventListener("click", function () {
-    //Re-enables option choices upon loading next question
-    for (i = 0; i <= 3; i++) {
-        allChoices[i].classList.remove("disabled");
-    }
-
-    //To be deleted - removes highlight from last question's choices
-    allChoices.forEach((choices) => {
-        choices.classList.remove("active");
-    });
-
-    //Loads next question
-    if (questionNumb < questionsBank.length - 1) {
-        questionNumb++;
-        loadQuestion(questionNumb);
-    } else {
-        //save score function here
-        quizPage.style.display = "none";
-        saveScorePage.style.display = "block";
-        // clearInterval(timer);
-        // secondsLeft = 5 * 60;
-    }
-});
-
-
-
-
-//Score Keeper on Quiz Page
-//SCORESESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 var playerScoreTracker = document.querySelector(".player-score-tracker");
-
-
+var finalPlayerScore = document.querySelector(".player-score")
 
 
 
@@ -299,6 +268,21 @@ var saveBtn = document.querySelector("#save-btn");
 var scoreBoardBtn2 = document.querySelector("#save-pg-scores-btn");
 var playAgainBtn = document.querySelector("#restart-btn");
 var saveQuitBtn = document.querySelector("#save-pg-quit-btn");
+var playerName = document.querySelector("#username");
+
+
+//insert save function here
+
+
+
+
+
+
+
+
+
+
+
 
 //Clicking achievements leads you to scoreboard page
 scoreBoardBtn2.addEventListener("click", function () {
@@ -323,9 +307,29 @@ saveQuitBtn.addEventListener("click", function () {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Score Board Page
 var highScorePage = document.querySelector(".hs-pg");
 var highScoreQuitBtn = document.querySelector("#hs-pg-quit-btn");
+
+
+
+//insert viewing high score function here
+
+
+
 
 //Clicking quit game leads you to start page
 highScoreQuitBtn.addEventListener("click", function () {

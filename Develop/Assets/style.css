@@ -35,6 +35,10 @@
     color: rgb(121, 121, 121);
 }
 
+.correct {
+    color: green;
+}
+
 .info-pg,
 .quiz-pg,
 .save-pg,
