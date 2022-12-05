@@ -115,6 +115,11 @@ h1 {
     grid-area: 2 / 1 / span 1 / span 2;
 }
 
+.next-btn {
+    /* TODO add a way to distinguish next button from rest of answer choices margin-left: 600px; */
+    width: 100%;
+}
+
 /* Save Score Page */
 .save-pg {
     display: none;

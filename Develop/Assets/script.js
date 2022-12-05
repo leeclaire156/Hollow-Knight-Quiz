@@ -13,7 +13,7 @@ startBtn.addEventListener("click", function () {
 
     //!!!!!!!!!!!!TODO DELETE BELOW AND UNCOMMENT ABOVE
     quizPage.style.display = "grid";
-    //starting the game should always resetart the timer
+    //starting the game should always restart the timer
     clearInterval(timer);
     startTimer();
     loadQuestion(0);
@@ -178,11 +178,16 @@ allChoices.forEach((choices, playerAns) => {
 
 
         if (chosenAns == questionsBank[questionNumb].correct) {
-            playerScore += 100;
+            // playerScore += 100;
+            incrementScore();
+            //delete later for checking purposes only
             console.log(playerScore);
         } else {
             //If the player clicks on the wrong answer, 5 seconds are taken off the clock
             secondsLeft -= 5;
+            // playerScore += 0;
+            //delete later for checking purposes only
+            console.log(playerScore);
         }
 
         //To be deleted - highlights answer chosen in grey
@@ -196,6 +201,25 @@ allChoices.forEach((choices, playerAns) => {
     })
 
 });
+
+
+
+//Score Keeper on Quiz Page
+var playerScoreTracker = document.querySelector(".player-score-tracker");
+var localScore;
+
+function incrementScore() {
+    playerScore += 100;
+    playerScoreTracker.innerText = playerScore;
+    playerScoreFinal.innerText = playerScore;
+    localScore = localStorage.setItem("finalScore", playerScore);
+}
+
+
+
+
+
+
 
 
 
@@ -216,7 +240,6 @@ nextBtn.addEventListener("click", function () {
         questionNumb++;
         loadQuestion(questionNumb);
     } else {
-        //save score function here
         quizPage.style.display = "none";
         saveScorePage.style.display = "block";
         // clearInterval(timer);
@@ -227,9 +250,8 @@ nextBtn.addEventListener("click", function () {
 
 
 
-//Score Keeper on Quiz Page
-//SCORESESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-var playerScoreTracker = document.querySelector(".player-score-tracker");
+
+
 
 
 
@@ -264,10 +286,12 @@ function startTimer() {
 }
 
 function ranOuttaTime() {
-    //!!TODO replace below with function based on line 209 (else portion of the if/else statement from nextBtn)
     timerCountdown.innerHTML = "NONE";
     quizPage.style.display = "none";
     saveScorePage.style.display = "block";
+
+
+
     // clearInterval(timer);
     // secondsLeft = 5 * 60;
 }
@@ -298,6 +322,24 @@ var saveBtn = document.querySelector("#save-btn");
 var scoreBoardBtn2 = document.querySelector("#save-pg-scores-btn");
 var playAgainBtn = document.querySelector("#restart-btn");
 var saveQuitBtn = document.querySelector("#save-pg-quit-btn");
+//Score Keeper on Save Score Page
+var playerScoreFinal = document.querySelector("#player-score");
+
+// var localScore = localStorage.setItem("variableName", variable)
+// var finalScore = localStorage.getItem("finalScore");
+
+
+
+
+// !!!!!! Delete below, used to test access
+// playerScoreFinal.innerText = 10;
+
+
+//NEED TO DISABLE SAVE WHEN YOU HAVENT WRITTEN INITIALS IN YET
+https://youtu.be/o3MF_JmQxYg?list=PLDlWc9AfQBfZIkdVaOQXi1tizJeNJipEx&t=583
+
+//NEED save score to SCOREBOARD WITH INITIALS HERE
+
 
 //Clicking achievements leads you to scoreboard page
 scoreBoardBtn2.addEventListener("click", function () {
@@ -305,12 +347,15 @@ scoreBoardBtn2.addEventListener("click", function () {
     highScorePage.style.display = "block";
 });
 
+
+
 //Clicking play again leads you to quiz page
 playAgainBtn.addEventListener("click", function () {
     //should reset back to question 1
     questionNumb = 0;
-    //player score should reset
-    //timer should reset if it hasnt already
+    //player score should reset!!!! currently does not
+    //timer should reset currently does not!!!
+    //question 1 should visually be the grubfather one!!! currently it is visually the last question but registers as the first question which is really really weird.
     saveScorePage.style.display = "none";
     quizPage.style.display = "grid";
 });
