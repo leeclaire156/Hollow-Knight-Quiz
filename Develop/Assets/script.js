@@ -12,7 +12,7 @@ function reset() {
     playerScoreTracker.innerText = playerScore;
     questionNumb = 0;
     loadQuestion(questionNumb);
-    secondsLeft = .1 * 60;
+    secondsLeft = 5 * 60;
     clearInterval(timer);
     timerCountdown.innerHTML = `5:00`;
     //Re-enables option choices
@@ -82,76 +82,106 @@ var questionsBank = [
 
     {
         question: "What do the Monarch Wings do?",
-        correct: "Allows the knight to double jump",
-        choices: ["Allows the knight to double jump", "Allows the knight to fly", "Allows the knight to swim in acid", "Allows the knight to replace Vengeful Spirit with 9 flukes in battle"]
+        correct: "Allows the Knight to double jump",
+        choices: ["Allows the Knight to replace Vengeful Spirit with 9 flukes in battle", "Allows the Knight to fly", "Allows the Knight to swim in acid", "Allows the Knight to double jump"]
+    },
+
+    {
+        question: "Which is not a nail art?",
+        correct: "Descending Slash",
+        choices: ["Cyclone Slash", "Descending Slash", "Great Slash", "Dash Slash"]
+    },
+
+    {
+        question: "How many maps does Conifer sell?",
+        correct: "12",
+        choices: ["10", "11", "12", "13"]
     },
 
     {
         question: "Who teaches the Cyclone Slash nail art?",
         correct: "Mato",
         choices: ["Mato", "Sly", "Oro", "Sheo"]
+    },
+
+    {
+        question: "Which map does Iselda sell that Conifer does not?",
+        correct: "Resting Grounds",
+        choices: ["Resting Grounds", "White Palace", "The Abyss", "Howling Cliffs"]
+    },
+
+    {
+        question: "Which dreamer is found in Fog Canyon?",
+        correct: "Monomon the Teacher",
+        choices: ["Monomon the Teacher", "Lurien the Watcher", "Herrah the Beast", "None"]
+    },
+
+    {
+        question: "Where can you find Bretta?",
+        correct: "Fungal Wastes",
+        choices: ["Forgotten Crossroads", "Fog Canyon", "Greenpath", "Fungal Wastes"]
+    },
+
+    {
+        question: "Who teaches the Dash Slash nail art?",
+        correct: "Oro",
+        choices: ["Mato", "Sly", "Oro", "Sheo"]
+    },
+
+    {
+        question: "Who sells the Fragile Greed charm?",
+        correct: "Leg Eater",
+        choices: ["Divine", "Leg Eater", "Sly", "Salubra"]
+    },
+
+    {
+        question: "How many Stag Stations are there in total?",
+        correct: "11",
+        choices: ["9", "10", "11", "12"]
+    },
+
+    {
+        question: "What are rancid eggs used for?",
+        correct: "To get back the Hollow Knight's Shade",
+        choices: ["Eating", "To get back the Hollow Knight's Shade", "They can be sold to Relic Seeker Lemm", "They can be used to buy charms"]
+    },
+
+    {
+        question: "What does the Spell Twister charm do?",
+        correct: "Reduces the SOUL cost of casting spells",
+        choices: ["Increases the power of spells, dealing more damage to foes", "Greatly increases the amount of SOUL gained when striking an enemy with the nail", "Reduces the SOUL cost of casting spells", "Increases the speed of focusing SOUL"]
+    },
+
+    {
+        question: "What does the Shade Cloak do?",
+        correct: "Allows the Knight to dash through enemies and their attacks without taking damage",
+        choices: ["Allows the Knight to dash through enemies and their attacks without taking damage", "Allows the Knight to reveal hidden dreams or open gateways", "Allows the Knight to cling to walls and leap off of them", "Allows the Knight to cling to walls and leap off of them"]
+    },
+
+    {
+        question: "Who is the first npc you meet in Dirtmouth?",
+        correct: "Elderbug",
+        choices: ["Gravedigger", "Sly", "Iselda", "Elderbug"]
+    },
+
+    {
+        question: "Who teaches the Great Slash nail art?",
+        correct: "Sheo",
+        choices: ["Mato", "Sly", "Oro", "Sheo"]
+    },
+
+    {
+        question: "Which of the Nailmaster brothers does the NailSmith end up with if you spare him?",
+        correct: "Sheo",
+        choices: ["Mato", "Sheo", "Oro", "He doesn't"]
+    },
+
+    {
+        question: "Relic Seeker Lemm will not purchase your relics if the Knight has what charm equipped?",
+        correct: "Defender's Crest Charm",
+        choices: ["Defender's Crest Charm", "Spore Shroom", "Thorns of Agony", "Flukenest"]
     }
-    /*,
-{
-    question: "",
-    correct: "",
-    choices: ["", "", "", ""]
-},
 
-{
-    question: "",
-    correct: "",
-    choices: ["", "", "", ""]
-},
-
-{
-    question: "",
-    correct: "",
-    choices: ["", "", "", ""]
-},
-
-{
-    question: "",
-    correct: "",
-    choices: ["", "", "", ""]
-},
-
-{
-    question: "",
-    correct: "",
-    choices: ["", "", "", ""]
-},
-
-{
-    question: "",
-    correct: "",
-    choices: ["", "", "", ""]
-},
-
-{
-    question: "",
-    correct: "",
-    choices: ["", "", "", ""]
-},
-
-{
-    question: "",
-    correct: "",
-    choices: ["", "", "", ""]
-},
-
-{
-    question: "",
-    correct: "",
-    choices: ["", "", "", ""]
-},
-
-{
-    question: "",
-    correct: "",
-    choices: ["", "", "", ""]
-} 
-*/
 ];
 
 var questionNumb = 0;
@@ -191,8 +221,8 @@ allChoices.forEach((choices, playerAns) => {
         if (chosenAns == questionsBank[questionNumb].correct) {
             incrementScore();
         } else {
-            //If the player clicks on the wrong answer, 5 seconds are taken off the clock
-            secondsLeft -= 5;
+            //If the player clicks on the wrong answer, 30 seconds are taken off the clock
+            secondsLeft -= 30;
         }
     })
 });
@@ -202,7 +232,7 @@ var playerScoreTracker = document.querySelector(".player-score-tracker");
 var localScore;
 
 function incrementScore() {
-    playerScore += 100;
+    playerScore += 125;
     //Visually shows the score on the upper right hand corner of the quiz page
     playerScoreTracker.innerText = playerScore;
     //Visually shows the score on the save score page
@@ -233,7 +263,7 @@ nextBtn.addEventListener("click", function () {
 
 //Timer on Quiz Page
 var timerCountdown = document.querySelector(".time-remaining");
-var secondsLeft = .1 * 60;
+var secondsLeft = 5 * 60;
 var timer;
 
 function startTimer() {
