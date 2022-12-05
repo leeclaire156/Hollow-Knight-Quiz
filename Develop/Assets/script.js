@@ -5,31 +5,37 @@ var startBtn = document.querySelector("#start-btn");
 var scoreBoardBtn = document.querySelector(".scores-btn");
 var playerScore = 0;
 
-//This should reset timer and score back to 5 minutes and 0 pts.
+//This should reset timer and score back to 5 minutes and 0 pts. Player should be sent back to question 1 as well.
 //This function should be triggered by the "Start Game" button in main menu and the "Play Again" button in save score page
-function reset() { }
+function reset() {
+    playerScore = 0;
+    playerScoreTracker.innerText = playerScore;
+    questionNumb = 0;
+    loadQuestion(questionNumb);
+    secondsLeft = .1 * 60;
+    clearInterval(timer);
+    timerCountdown.innerHTML = `5:00`;
+    //Re-enables option choices
+    for (i = 0; i <= 3; i++) {
+        allChoices[i].classList.remove("disabled");
+    }
+    //Removes highlight from last question's choices
+    allChoices.forEach((choices) => {
+        choices.classList.remove("active");
+    });
+}
 
 //Clicking start leads you to instructions page
 startBtn.addEventListener("click", function () {
     startPage.style.display = "none";
-    // instructionPage.style.display = "block";\
-
-
-    //!!!!!!!!!!!!TODO DELETE BELOW AND UNCOMMENT ABOVE
-    quizPage.style.display = "grid";
-    //starting the game should always restart the timer
-    clearInterval(timer);
-    startTimer();
-    loadQuestion(0);
-    playerScore = 0;
+    instructionPage.style.display = "block";
 });
 
-//Clicking start leads you to score board/high score page
+//Clicking achievements leads you to score board/high score page
 scoreBoardBtn.addEventListener("click", function () {
     startPage.style.display = "none";
-    // highScorePage.style.display = "block";
-    //!!!!!!!!!!!!TODO DELETE BELOW AND UNCOMMENT ABOVE
-    saveScorePage.style.display = "block";
+    highScorePage.style.display = "block";
+    scoresReveal();
 });
 
 //Instructions Page
@@ -38,12 +44,10 @@ var continueBtn = document.querySelector("#continue-btn");
 
 //Clicking continue leads you to quiz page
 continueBtn.addEventListener("click", function () {
+    reset();
     instructionPage.style.display = "none";
     quizPage.style.display = "grid";
-    //TODO uncomment below!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // startTimer();
-    // loadQuestion(0);
-    //playerScore = 0;
+    startTimer();
 });
 
 //Quiz Page
@@ -56,7 +60,6 @@ var choice2 = document.querySelector(".choice-2");
 var choice3 = document.querySelector(".choice-3");
 var choice4 = document.querySelector(".choice-4");
 var nextBtn = document.querySelector(".next-btn");
-
 
 var questionsBank = [
     {
@@ -151,10 +154,7 @@ var questionsBank = [
 */
 ];
 
-
 var questionNumb = 0;
-
-
 
 //This is how we change the questions based on the index
 function loadQuestion(index) {
@@ -167,48 +167,35 @@ function loadQuestion(index) {
     nextBtn.classList.add("disabled")
 }
 
-
+//This is how we select an answer and see our score
+//forEach() method calls a function for each element in an array, the choices will be passed to a parameter called playerAns
+//playerAns is what the player clicked on
 allChoices.forEach((choices, playerAns) => {
     choices.addEventListener("click", () => {
+
         //Enables the next button upon choosing an answer
         nextBtn.classList.remove("disabled")
 
-        //Shows in console log what player chose, returns a number
-        console.log(playerAns);
-        //converts number to match index in questionsBank array
-        var chosenAns = questionsBank[questionNumb].choices[playerAns];
-        //confirms answer player chose is a string from array
-        console.log(chosenAns);
-        //answer key for this question
-        console.log(questionsBank[questionNumb].correct);
-
-
-        if (chosenAns == questionsBank[questionNumb].correct) {
-            // playerScore += 100;
-            incrementScore();
-            //delete later for checking purposes only
-            console.log(playerScore);
-        } else {
-            //If the player clicks on the wrong answer, 5 seconds are taken off the clock
-            secondsLeft -= 5;
-            // playerScore += 0;
-            //delete later for checking purposes only
-            console.log(playerScore);
-        }
-
-        //To be deleted - highlights answer chosen in grey
+        //Highlights answer chosen in grey upon choosing an answer
         choices.classList.add("active");
 
-        //disable option choices When player selects an answer
+        //Disables option choices upon choosing an answer
         for (i = 0; i <= 3; i++) {
             allChoices[i].classList.add("disabled");
         }
 
+        //Converts playerAns (which registers as a number if you console log playerAns) to match with choice index in questionsBank array
+        var chosenAns = questionsBank[questionNumb].choices[playerAns];
+
+        //Checks playerAns compared to correct answer for that question. If the player clicks on the right answer, score goes up by 100 points.
+        if (chosenAns == questionsBank[questionNumb].correct) {
+            incrementScore();
+        } else {
+            //If the player clicks on the wrong answer, 5 seconds are taken off the clock
+            secondsLeft -= 5;
+        }
     })
-
 });
-
-
 
 //Score Keeper on Quiz Page
 var playerScoreTracker = document.querySelector(".player-score-tracker");
@@ -216,18 +203,11 @@ var localScore;
 
 function incrementScore() {
     playerScore += 100;
+    //Visually shows the score on the upper right hand corner of the quiz page
     playerScoreTracker.innerText = playerScore;
+    //Visually shows the score on the save score page
     playerScoreFinal.innerText = playerScore;
-    localScore = JSON.stringify(localStorage.setItem("finalScore", playerScore));
 }
-
-
-
-
-
-
-
-
 
 //Next button clicking cycles through questions
 nextBtn.addEventListener("click", function () {
@@ -236,7 +216,7 @@ nextBtn.addEventListener("click", function () {
         allChoices[i].classList.remove("disabled");
     }
 
-    //To be deleted - removes highlight from last question's choices
+    //Removes highlight from last question's choices
     allChoices.forEach((choices) => {
         choices.classList.remove("active");
     });
@@ -248,34 +228,12 @@ nextBtn.addEventListener("click", function () {
     } else {
         quizPage.style.display = "none";
         saveScorePage.style.display = "block";
-        // clearInterval(timer);
-        // secondsLeft = 5 * 60;
     }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Timer on Quiz Page
 var timerCountdown = document.querySelector(".time-remaining");
-var secondsLeft = 5 * 60;
+var secondsLeft = .1 * 60;
 var timer;
 
 function startTimer() {
@@ -285,27 +243,22 @@ function startTimer() {
         var sec = Math.floor(secondsLeft % 60);
         timerCountdown.innerHTML = `${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}`;
         if (secondsLeft == 0 || secondsLeft < 1) {
-            clearInterval(timer);
             ranOuttaTime();
         }
     }, 1000);
 }
 
+//Closes quiz page and opens save score page.
 function ranOuttaTime() {
-    timerCountdown.innerHTML = "NONE";
     quizPage.style.display = "none";
     saveScorePage.style.display = "block";
-
-
-    // clearInterval(timer);
-    // secondsLeft = 5 * 60;
 }
 
 
 //Save Score Page
 var saveScorePage = document.querySelector(".save-pg");
 var saveBtn = document.querySelector("#save-btn");
-//player initials
+//Player initials input text-box
 var playerInitials = document.querySelector("#player-initials");
 //Score Keeper on Save Score Page
 var playerScoreFinal = document.querySelector("#player-score");
@@ -315,23 +268,25 @@ playerInitials.addEventListener("input", function () {
     playerInitials.value = playerInitials.value.toUpperCase();
 });
 
+
 // Stores an array containing players' initials and their respective scores. The ?? means there's no scores previously stored (meaning the scoreArray's value is null) like on a first-time run, the scoredArray initializes the array with [].
 // Research nullish coalescing operator (??) for more information
 var scoreArray = JSON.parse(localStorage.getItem("finalScores")) ?? [];
 
 var maxScoresStored = 5;
 
-saveBtn.addEventListener("click", function () {
-    saveScore();
-});
+// saveBtn.addEventListener("click", function () {
+//     saveScore();
+// });
 
 function saveScore() {
     var score = {
         score: playerScore,
+        //This is how the player initials are accessed from input
         name: playerInitials.value
     };
 
-    // 1. Adds score [line 327] array to scoreArray
+    // 1. Adds score array to scoreArray
     scoreArray.push(score);
 
     // 2. Sorts the scoreArray but order of highest score. Higher scores get smaller index numbers.
@@ -349,39 +304,50 @@ var scoreBoardBtn2 = document.querySelector("#save-pg-scores-btn");
 var playAgainBtn = document.querySelector("#restart-btn");
 var saveQuitBtn = document.querySelector("#save-pg-quit-btn");
 
-//Clicking achievements leads you to scoreboard page
+//Clicking achievements leads you to scoreboard
 scoreBoardBtn2.addEventListener("click", function () {
+    reset();
     saveScorePage.style.display = "none";
     highScorePage.style.display = "block";
+    scoresReveal();
 });
 
-//Clicking play again leads you to quiz page -- may get rid of this button
+//Clicking play again leads you to quiz page
 playAgainBtn.addEventListener("click", function () {
-    //should reset back to question 1, currently it visually does not
-    questionNumb = 0;
-    //player score should reset!!!! currently does not
-    //timer should reset currently does not!!!
-    //question 1 should visually be the grubfather one!!! currently it is visually the last question but registers as the first question which is really really weird.
     saveScorePage.style.display = "none";
     quizPage.style.display = "grid";
+    reset();
+    startTimer();
 });
 
 //Clicking quit leads you to quiz page
 saveQuitBtn.addEventListener("click", function () {
     saveScorePage.style.display = "none";
     startPage.style.display = "block";
+    reset();
 });
 
 
-//Score Board Page
+//Score Board Page - This is here high scores are stored
 var highScorePage = document.querySelector(".hs-pg");
-var highScoreQuitBtn = document.querySelector("#hs-pg-quit-btn");
+
+function scoresReveal() {
+    //Accesses list where scores will be displayed
+    var scoreBoardList = document.querySelector(".hs-list");
+
+    //Grabs scores out of local storage
+    var displayScores = JSON.parse(localStorage.getItem("finalHighScore")) ?? [];
+
+
+    //Array.map() is a method that makes a new array that has had a function affect every element in the old array.
+    //The scoreBoardList.innerHTML will display an array of scores that are placed into the HTML by creating <li> elments and joining them together.
+    scoreBoardList.innerHTML = displayScores.map((score) => `<li>${score.name}-${score.score}</li>`).join("");
+}
 
 //Clicking quit game leads you to start page
+var highScoreQuitBtn = document.querySelector("#hs-pg-quit-btn");
+
 highScoreQuitBtn.addEventListener("click", function () {
     highScorePage.style.display = "none";
-    //startPage.style.display = "block";
-
-    //!!!!!TODO will delete below later, just need to use it to access score page w/o going to quiz
-    saveScorePage.style.display = "block";
+    startPage.style.display = "block";
 });
