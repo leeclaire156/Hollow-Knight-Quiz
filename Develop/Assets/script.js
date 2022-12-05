@@ -5,6 +5,10 @@ var startBtn = document.querySelector("#start-btn");
 var scoreBoardBtn = document.querySelector(".scores-btn");
 var playerScore = 0;
 
+//This should reset timer and score back to 5 minutes and 0 pts.
+//This function should be triggered by the "Start Game" button in main menu and the "Play Again" button in save score page
+function reset() { }
+
 //Clicking start leads you to instructions page
 startBtn.addEventListener("click", function () {
     startPage.style.display = "none";
@@ -23,7 +27,9 @@ startBtn.addEventListener("click", function () {
 //Clicking start leads you to score board/high score page
 scoreBoardBtn.addEventListener("click", function () {
     startPage.style.display = "none";
-    highScorePage.style.display = "block";
+    // highScorePage.style.display = "block";
+    //!!!!!!!!!!!!TODO DELETE BELOW AND UNCOMMENT ABOVE
+    saveScorePage.style.display = "block";
 });
 
 //Instructions Page
@@ -212,7 +218,7 @@ function incrementScore() {
     playerScore += 100;
     playerScoreTracker.innerText = playerScore;
     playerScoreFinal.innerText = playerScore;
-    localScore = localStorage.setItem("finalScore", playerScore);
+    localScore = JSON.stringify(localStorage.setItem("finalScore", playerScore));
 }
 
 
@@ -291,55 +297,57 @@ function ranOuttaTime() {
     saveScorePage.style.display = "block";
 
 
-
     // clearInterval(timer);
     // secondsLeft = 5 * 60;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Save Score Page
 var saveScorePage = document.querySelector(".save-pg");
 var saveBtn = document.querySelector("#save-btn");
-var scoreBoardBtn2 = document.querySelector("#save-pg-scores-btn");
-var playAgainBtn = document.querySelector("#restart-btn");
-var saveQuitBtn = document.querySelector("#save-pg-quit-btn");
+//player initials
+var playerInitials = document.querySelector("#player-initials");
 //Score Keeper on Save Score Page
 var playerScoreFinal = document.querySelector("#player-score");
 
-// var localScore = localStorage.setItem("variableName", variable)
-// var finalScore = localStorage.getItem("finalScore");
+//Converts input text to uppercase
+playerInitials.addEventListener("input", function () {
+    playerInitials.value = playerInitials.value.toUpperCase();
+});
+
+// Stores an array containing players' initials and their respective scores. The ?? means there's no scores previously stored (meaning the scoreArray's value is null) like on a first-time run, the scoredArray initializes the array with [].
+// Research nullish coalescing operator (??) for more information
+var scoreArray = JSON.parse(localStorage.getItem("finalScores")) ?? [];
+
+var maxScoresStored = 5;
+
+saveBtn.addEventListener("click", function () {
+    saveScore();
+});
+
+function saveScore() {
+    var score = {
+        score: playerScore,
+        name: playerInitials.value
+    };
+
+    // 1. Adds score [line 327] array to scoreArray
+    scoreArray.push(score);
+
+    // 2. Sorts the scoreArray but order of highest score. Higher scores get smaller index numbers.
+    scoreArray.sort((a, b) => b.score - a.score);
+
+    // 3. Only keeps maxScoresStored (aka top 5) scores
+    scoreArray.splice(maxScoresStored);
+
+    // 4. Updates array to newly sorted one
+    localStorage.setItem("finalHighScore", JSON.stringify(scoreArray));
+}
 
 
-
-
-// !!!!!! Delete below, used to test access
-// playerScoreFinal.innerText = 10;
-
-
-//NEED TO DISABLE SAVE WHEN YOU HAVENT WRITTEN INITIALS IN YET
-https://youtu.be/o3MF_JmQxYg?list=PLDlWc9AfQBfZIkdVaOQXi1tizJeNJipEx&t=583
-
-//NEED save score to SCOREBOARD WITH INITIALS HERE
-
+var scoreBoardBtn2 = document.querySelector("#save-pg-scores-btn");
+var playAgainBtn = document.querySelector("#restart-btn");
+var saveQuitBtn = document.querySelector("#save-pg-quit-btn");
 
 //Clicking achievements leads you to scoreboard page
 scoreBoardBtn2.addEventListener("click", function () {
@@ -347,11 +355,9 @@ scoreBoardBtn2.addEventListener("click", function () {
     highScorePage.style.display = "block";
 });
 
-
-
-//Clicking play again leads you to quiz page
+//Clicking play again leads you to quiz page -- may get rid of this button
 playAgainBtn.addEventListener("click", function () {
-    //should reset back to question 1
+    //should reset back to question 1, currently it visually does not
     questionNumb = 0;
     //player score should reset!!!! currently does not
     //timer should reset currently does not!!!

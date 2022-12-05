@@ -27,3 +27,21 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/maxlength
 
 * score incrementing function credit:
 https://www.youtube.com/watch?v=BOQLbu_Crc0&list=PLDlWc9AfQBfZIkdVaOQXi1tizJeNJipEx&index=6
+
+* JSON.parse/stringify
+https://www.w3schools.com/js/js_json_intro.asp
+
+* input key event
+https://developer.mozilla.org/en-US/docs/Web/Events
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text
+
+* add event listener: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#syntax
+
+* converting text to uppercase
+https://www.i2tutorials.com/convert-input-text-to-uppercase-using-javascript/#:~:text=JavaScript%20has%20two%20useful%20functions,toUpperCase().
+
+* save score:
+using ?? operator
+https://michael-karen.medium.com/how-to-save-high-scores-in-local-storage-7860baca9d68
+
+https://www.youtube.com/watch?v=DFhmNLKwwGw&list=PLDlWc9AfQBfZIkdVaOQXi1tizJeNJipEx&index=11
