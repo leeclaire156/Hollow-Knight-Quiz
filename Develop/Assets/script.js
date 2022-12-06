@@ -155,7 +155,7 @@ var questionsBank = [
     {
         question: "What does the Shade Cloak do?",
         correct: "Allows the Knight to dash through enemies and their attacks without taking damage",
-        choices: ["Allows the Knight to dash through enemies and their attacks without taking damage", "Allows the Knight to reveal hidden dreams or open gateways", "Allows the Knight to cling to walls and leap off of them", "Allows the Knight to cling to walls and leap off of them"]
+        choices: ["Allows the Knight to dash through enemies and their attacks without taking damage", "Allows the Knight to reveal hidden dreams or open gateways", "Allows the Knight to swim in acid"]
     },
 
     {
