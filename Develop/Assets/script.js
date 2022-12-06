@@ -381,3 +381,8 @@ highScoreQuitBtn.addEventListener("click", function () {
     highScorePage.style.display = "none";
     startPage.style.display = "block";
 });
+
+// //Music
+window.onclick = function () {
+    document.getElementById("menu-music").play();
+}
