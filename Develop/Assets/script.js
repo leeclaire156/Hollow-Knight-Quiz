@@ -305,9 +305,9 @@ var scoreArray = JSON.parse(localStorage.getItem("finalScores")) ?? [];
 
 var maxScoresStored = 5;
 
-// saveBtn.addEventListener("click", function () {
-//     saveScore();
-// });
+saveBtn.addEventListener("click", function () {
+    saveScore();
+});
 
 function saveScore() {
     var score = {
