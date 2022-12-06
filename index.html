@@ -25,15 +25,14 @@
 
     <!-- Instructions -->
     <div class="info-pg">
-        <p class="instructions instr-1">Carry this information with you on your journey,</p>
-        <p class="instructions instr-2">You will be presented with a 5 minute timer,</p>
-        <p class="instructions instr-3">Time will be taken off if you answer incorrectly,</p>
-        <p class="instructions instr-4">You can only choose your answer once,</p>
-        <p class="instructions instr-5">The next question will appear when you click next,</p>
-        <p class="instructions instr-6">The game ends when the timer reaches 0:00 or when all questions are answered,
-        </p>
-        <p class="instructions instr-7">Your score can be saved at the end after you input your initials.</p>
-        <p class="instructions instr-8" id="signature">- CLAIRE THE DEVELOPER</p>
+        <p class="instructions">Carry this information with you on your journey,</p>
+        <p class="instructions">You will be presented with a 5 minute timer,</p>
+        <p class="instructions">Time will be taken off if you answer incorrectly,</p>
+        <p class="instructions">You can only choose your answer once,</p>
+        <p class="instructions">The next question will appear when you click next,</p>
+        <p class="instructions">The game ends when the timer reaches 0:00 or when all questions are answered,</p>
+        <p class="instructions">Your score can be saved at the end after you input your initials.</p>
+        <p class="instructions" id="signature">- CLAIRE THE DEVELOPER</p>
         <button class="btn instructions" id="continue-btn" type="button">Continue</button>
     </div>
 
@@ -48,7 +47,10 @@
         <!--Quiz Score Tracker-->
         <div class="quiz-score">
             <h3>Score</h3>
-            <div class="player-score-tracker">0</div>
+            <div class="geo-score">
+                <div><img src="./Develop/Images/Geo.png"></div>
+                <div class="player-score-tracker">0</div>
+            </div>
         </div>
 
         <!-- Quiz Questions -->
@@ -84,7 +86,10 @@
     <!--Results and Save Score Page-->
     <div class="save-pg">
         <h3>Score</h3>
-        <div id="player-score">0</div>
+        <div class="geo-score">
+            <div><img src="./Develop/Images/Geo.png"></div>
+            <div id="player-score">0</div>
+        </div>
         <form class="save-form">
             <h3>Save your score by entering your initials below.</h3>
             <input required type="text" minlength="2" maxlength="2" id="player-initials" placeholder="Your initials">

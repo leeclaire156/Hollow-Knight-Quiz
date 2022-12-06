@@ -13,8 +13,15 @@
     font-size: 3rem;
 }
 
+img {
+    width: 50px;
+    height: auto;
+}
+
 .btn:hover {
     cursor: pointer;
+    background: rgb(255, 255, 255, 0.5);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.05) 35%, rgba(255, 255, 255, 0.05) 40%, rgba(255, 255, 255, .25) 50%, rgba(255, 255, 255, 0.1) 60%, rgba(0, 0, 0, 0.05) 65%);
 }
 
 .choice:hover {
@@ -22,6 +29,7 @@
     /* color | offset-x | offset-y | blur-radius
     color: white; */
     text-shadow: white 0 0 2rem;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.05) 35%, rgba(255, 255, 255, 0.05) 40%, rgba(255, 255, 255, .25) 50%, rgba(255, 255, 255, 0.1) 60%, rgba(0, 0, 0, 0.05) 65%);
 }
 
 .disabled {
@@ -167,6 +175,21 @@ h1 {
     grid-area: 1 / 2 / span 1 / span 1;
 }
 
+.geo-score {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.geo-score>* {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
 .questions {
     grid-area: 2 / 1 / span 1 / span 2;
 }
@@ -193,9 +216,4 @@ h1 {
 
 .hs-list {
     list-style: none;
-}
-
-
-#hs-pg-quit-btn {
-    border: 1px white solid;
 }
